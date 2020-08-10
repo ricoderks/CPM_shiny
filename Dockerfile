@@ -31,7 +31,8 @@ RUN install2.r --error --skipinstalled \
     openxlsx \
     tidyxl \
     ggvis \
-    unpivotr
+    unpivotr \
+    BiocManager
 
 RUN R -e 'BiocManager::install(c("multtest", "CAMERA", "pcaMethods", "preprocessCore", "Biobase", "mzID"))' \
   && R -e 'devtools::install_github("ricoderks/Rcpm")' \
