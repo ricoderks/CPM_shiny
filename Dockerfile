@@ -12,7 +12,7 @@ RUN apt-get update \
     libssl-dev \
   && . /etc/environment
 
-RUN install2.r --error --skipinstalled
+RUN install2.r --error --skipinstalled \
     DT \
     tidyverse \
     stringi \
