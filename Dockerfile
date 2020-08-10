@@ -34,7 +34,7 @@ RUN install2.r --error --skipinstalled \
     unpivotr \
     BiocManager
 
-RUN R -e 'BiocManager::install(c("multtest", "pcaMethods", "preprocessCore", "Biobase", "mzID"))' \
+RUN R -e 'BiocManager::install(c("multtest", "pcaMethods", "preprocessCore", "xcms", "Biobase", "mzID"))' \
   && R -e 'devtools::install_github("ricoderks/Rcpm")' \
   && R -e 'devtools::install_github("ricoderks/ggCPM")'
   
