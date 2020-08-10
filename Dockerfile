@@ -10,10 +10,9 @@ RUN apt-get update \
     libnetcdf-dev \
     libxml2-dev \
     libssl-dev \
-  && . /etc/environment \
-  && install2.r --error \
-    --repos $MRAN \
-    --repos 'http://www.bioconductor.org/packages/release/bioc' \
+  && . /etc/environment
+
+RUN install2.r --error --skipinstalled
     DT \
     tidyverse \
     stringi \
@@ -35,10 +34,14 @@ RUN apt-get update \
     plotly \
     VennDiagram \
     sessioninfo \
+    stringi \
+    openxlsx \
     tidyxl \
     ggvis \
-  && r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
-  && r -e 'devtools::install_github("ricoderks/Rcpm")' \
-  && r -e 'devtools::install_github("ricoderks/ggCPM")' \
-  && r -e 'devtools::install_github("nacnudus/unpivotr")' \
-  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+    unpivotr
+
+RUN R -e 'BiocManager::install(c("multtest", "CAMERA", "pcaMethods", "preprocessCore"))'
+  && R -e 'devtools::install_github("ricoderks/Rcpm")' \
+  && R -e 'devtools::install_github("ricoderks/ggCPM")'
+  
+RUN rm -rf /tmp/downloaded_packages/ /tmp/*.rds
