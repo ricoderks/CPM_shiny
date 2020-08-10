@@ -21,16 +21,9 @@ RUN install2.r --error --skipinstalled \
     httr \
     estimability \
     XML \
-    Biobase \
-    mzID \
-    multtest \
-    xcms \
     htmlTable \
-    CAMERA \
     rsm \
-    pcaMethods \
     pls \
-    preprocessCore \
     plotly \
     VennDiagram \
     sessioninfo \
@@ -40,7 +33,7 @@ RUN install2.r --error --skipinstalled \
     ggvis \
     unpivotr
 
-RUN R -e 'BiocManager::install(c("multtest", "CAMERA", "pcaMethods", "preprocessCore"))' \
+RUN R -e 'BiocManager::install(c("multtest", "CAMERA", "pcaMethods", "preprocessCore", "Biobase", "mzID"))' \
   && R -e 'devtools::install_github("ricoderks/Rcpm")' \
   && R -e 'devtools::install_github("ricoderks/ggCPM")'
   
