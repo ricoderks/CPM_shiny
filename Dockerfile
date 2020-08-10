@@ -40,7 +40,7 @@ RUN install2.r --error --skipinstalled \
     ggvis \
     unpivotr
 
-RUN R -e 'BiocManager::install(c("multtest", "CAMERA", "pcaMethods", "preprocessCore"))'
+RUN R -e 'BiocManager::install(c("multtest", "CAMERA", "pcaMethods", "preprocessCore"))' \
   && R -e 'devtools::install_github("ricoderks/Rcpm")' \
   && R -e 'devtools::install_github("ricoderks/ggCPM")'
   
