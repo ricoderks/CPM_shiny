@@ -27,7 +27,6 @@ RUN install2.r --error --skipinstalled \
     plotly \
     VennDiagram \
     sessioninfo \
-    stringi \
     openxlsx \
     tidyxl \
     ggvis \
