@@ -37,6 +37,8 @@ RUN install2.r --error --skipinstalled \
 RUN R -e 'BiocManager::install(c("multtest", "pcaMethods", "preprocessCore", "xcms", "Biobase", "mzID"))' \
   && R -e 'devtools::install_github("ricoderks/Rcpm")' \
   && R -e 'devtools::install_github("ricoderks/ggCPM")' \
-  && R -e 'devtools::install_github("ricoderks/cReateSeq")'
+  && R -e 'devtools::install_github("ricoderks/cReateSeq")' \
+  && R -e 'devtools::install_github("ricoderks/QComics")' \
+  && R -e 'devtools::install_github("ricoderks/lipidomics")'
   
 RUN rm -rf /tmp/downloaded_packages/ /tmp/*.rds
