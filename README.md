@@ -4,7 +4,13 @@ My shiny server in docker.
 
 # Build
 
-Build the container with e.g.:
+Build the container with:
+
+```
+docker build --tag username/image_name:tag_name .
+```
+
+Example:
 
 ```
 docker build --tag ricolumc/cpm_shiny:cpm_v0.6 . 
