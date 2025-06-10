@@ -39,6 +39,7 @@ RUN R -e 'BiocManager::install(c("multtest", "pcaMethods", "preprocessCore", "xc
   && R -e 'devtools::install_github("ricoderks/ggCPM")' \
   && R -e 'devtools::install_github("ricoderks/cReateSeq")' \
   && R -e 'devtools::install_github("ricoderks/QComics")' \
+  && R -e 'devtools::install_github("ricoderks/QClipidyzeR")' \
   && R -e 'devtools::install_github("ricoderks/lipidomics")'
   
 RUN rm -rf /tmp/downloaded_packages/ /tmp/*.rds
