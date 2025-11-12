@@ -1,8 +1,7 @@
 FROM rocker/shiny:latest
 LABEL maintainer="<Rico Derks r.j.e.derks@lumc.nl">
 
-## install some packages I need (e.g. from bioconductor)
-## not yet the same approach as above (i.e. install SUGGETS list manually)
+# install some system requirements
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     git \
@@ -11,35 +10,47 @@ RUN apt-get update \
     libnetcdf-dev \
     libxml2-dev \
     libssl-dev \
+    libwebpmux3 \
   && . /etc/environment
 
+# CRAN packages
 RUN install2.r --error --skipinstalled \
-    DT \
-    tidyverse \
-    stringi \
+    BiocManager \
     devtools \
-    openssl \
-    httr \
+    DT \
     estimability \
-    XML \
-    htmlTable \
-    rsm \
-    pls \
-    plotly \
-    VennDiagram \
-    sessioninfo \
-    openxlsx \
-    tidyxl \
     ggvis \
+    hablar \
+    htmlTable \
+    httr \
+    openssl \
+    openxlsx \
+    phonTools \
+    plotly \
+    pls \
+    readr \
+    readxl \
+    rsm \
+    sessioninfo \
+    shinyWidgets \
+    stringi \
+    stringr \
+    tidyverse \
+    tidyxl \
     unpivotr \
-    BiocManager
+    VennDiagram \
+    writexl \
+    XML
 
-RUN R -e 'BiocManager::install(c("multtest", "pcaMethods", "preprocessCore", "xcms", "Biobase", "mzID"))' \
-  && R -e 'devtools::install_github("ricoderks/Rcpm")' \
-  && R -e 'devtools::install_github("ricoderks/ggCPM")' \
+# BiocManager and github packages
+RUN R -e 'BiocManager::install(c("Biobase", "multtest", "mzID", "pcaMethods", "preprocessCore", "xcms"))' \
+  && R -e 'devtools::install_github("ricoderks/BatchCorrection")' \
   && R -e 'devtools::install_github("ricoderks/cReateSeq")' \
-  && R -e 'devtools::install_github("ricoderks/QComics")' \
+  && R -e 'devtools::install_github("ricoderks/ggCPM")' \
+  && R -e 'devtools::install_github("ricoderks/lipidomics")' \
   && R -e 'devtools::install_github("ricoderks/QClipidyzeR")' \
-  && R -e 'devtools::install_github("ricoderks/lipidomics")'
-  
+  && R -e 'devtools::install_github("ricoderks/QComics")' \
+  && R -e 'devtools::install_github("ricoderks/Rcpm")'
+
+# remove downloaded packages
 RUN rm -rf /tmp/downloaded_packages/ /tmp/*.rds
