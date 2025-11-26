@@ -23,6 +23,7 @@ RUN install2.r --error --skipinstalled \
     hablar \
     htmlTable \
     httr \
+    leaflet \
     openssl \
     openxlsx \
     phonTools \
@@ -32,6 +33,7 @@ RUN install2.r --error --skipinstalled \
     readxl \
     rsm \
     sessioninfo \
+    shinydashboard \
     shinyWidgets \
     stringi \
     stringr \
@@ -43,7 +45,7 @@ RUN install2.r --error --skipinstalled \
     XML
 
 # BiocManager and github packages
-RUN R -e 'BiocManager::install(c("Biobase", "multtest", "mzID", "pcaMethods", "preprocessCore", "xcms"))' \
+RUN R -e 'BiocManager::install(c("Biobase", "multtest", "mzID", "pcaMethods", "preprocessCore", "rhdf5", "xcms"))' \
   && R -e 'devtools::install_github("ricoderks/BatchCorrection")' \
   && R -e 'devtools::install_github("ricoderks/cReateSeq")' \
   && R -e 'devtools::install_github("ricoderks/ggCPM")' \
